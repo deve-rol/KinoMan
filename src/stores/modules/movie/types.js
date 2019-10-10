@@ -1,0 +1,1 @@
+export const A_GET_NEW_MOVIE = "A_GET_NEW_MOVIE";

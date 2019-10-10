@@ -7,27 +7,29 @@ let router = new Router({
     routes: [
         {
             path: '/',
-            name: 'Киноман',
             component: () => import('./views/home/index.vue'),
             children: [
                 {
                     path: '/',
-                    name: 'Главная',
+                    name: 'Kinoman',
                     component: () => import('./views/movies/index.vue'),
                 },
                 {
                     path: '/genres/:genres_id',
-                    name: 'Категории',
+                    name: 'Genres',
                     component: () => import('./views/movies/genres/index.vue'),
                 },
                 {
                     path: '/movie/:movie_id',
-                    name: 'Категории',
+                    name: 'Present',
                     component: () => import('./views/movies/present_movie.vue'),
                 }
             ]
         },
     ]
+});
+router.beforeEach( (to, from, next) => {
+   next()
 });
 
 export default router;

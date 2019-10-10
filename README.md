@@ -1,29 +1,13 @@
-# my-move
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#Скачайте програму в ZIP формате
+Clone or download -> Download ZIP
+#Распакуйте ZIP
+Распакуйте ZIP в любом месте вашего пк
+#Откройте терминал 
+Откройте терминал в главной папке приложения 
+#Установка npm install
+В терминале наберите команду npm install(установка может длится долго)
+#Запуск сервера npm run serve
+После установки в терминале наберите команду npm run serve
+#Открыть приложение
+После запуска локального сервера в конце терминала будут 2 ссылки(вероятней всего  http://localhost:8080/ и  http://192.168.1.7:8080/)
+Кликните по любому из них или скапируйте ссылку и вставте в поискавой строке вашего браузера

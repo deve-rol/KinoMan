@@ -1,17 +1,25 @@
-.card-movie {
+.card-movie,
+.present-movie{
     padding: 15px;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 15px;
     border-bottom: 1px solid #898989;
 }
-.card-movie .card-footer {
+.present-movie{
+    grid-template-columns: min-content 1fr;
+    grid-gap: 25px;
+    border: none;
+}
+.card-movie .card-footer
+{
     grid-column: 1/3;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.card-movie .card-footer button{
+.card-movie .card-footer button
+{
     border-radius: 1px;
     border: 1px solid #6e6e6e;
     color: #898989;
@@ -21,18 +29,23 @@
     cursor: pointer;
     transition: all .2s;
 }
-.card-movie .card-footer button:hover{
+.card-movie .card-footer button:hover
+{
      color: #ffffff;
      background-color: #626262;
 }
-.card-movie .card-footer p{
+.card-movie .card-footer p
+{
     color: #898989;
     font-size: 14px;
 }
-.card-movie .poster{
+.card-movie .poster,
+.present-movie .poster
+{
     position: relative;
 }
-.card-movie .poster:before{
+.card-movie .poster:before
+{
     position: absolute;
     content: "";
     top: 0;
@@ -44,10 +57,13 @@
     transition: all .2s;
     cursor: pointer;
 }
-.card-movie .poster:hover:before{
+.card-movie .poster:hover:before
+{
     opacity: .2;
 }
-.card-movie .title{
+.card-movie .title,
+.present-movie .title
+{
     width: max-content;
     font-size: 18px;
     color: #ababab;
@@ -55,10 +71,33 @@
     transition: all .2s;
     cursor: pointer;
 }
-.card-movie .title:hover{
+.present-movie .flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+.present-movie .title{
+    width: 100%;
+    cursor: default;
+    margin: 0 0 20px;
+}
+.present-movie .to-back{
+    white-space: nowrap;
+    font-size: 15px;
+    color: #898989;
+    transition: all .2s;
+    margin-left: auto;
+    cursor: pointer;
+}
+.present-movie .to-back:hover{
     color: #ffffff;
 }
-.card-movie .overview{
+.card-movie .title:hover
+{
+    color: #ffffff;
+}
+.card-movie .overview,
+.present-movie .overview
+{
     color: #898989;
     font-size: 14px;
     line-height: 16px;
@@ -67,4 +106,26 @@
     width: max-content;
     margin: 0 auto;
     padding: 10px 0 25px;
+}
+.pagination .pagin-dots{
+    color: #898989;
+    margin-right: 5px;
+}
+
+.present-movie .overview {
+    margin-bottom: 20px;
+}
+.present-movie .more-text {
+    color: #898989;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.present-movie .more-photo {
+    grid-column: 1/3;
+}
+.present-movie h3 {
+    color: #898989;
+    margin-bottom: 10px;
+    font-size: 16px;
 }

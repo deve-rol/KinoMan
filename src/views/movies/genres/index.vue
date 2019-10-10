@@ -5,30 +5,36 @@
                 :key="key"
                 class="card-movie"
         >
-            <div class="poster">
+            <div @click="toMovie(item.id)" class="poster">
                 <img :src="getPoster(item.poster_path)" width="250">
             </div>
             <div class="info-text">
-                <h3 class="title">{{item.title}}</h3>
+                <h3 @click="toMovie(item.id)" class="title">{{item.title}}</h3>
                 <p v-if="item.overview.length > 0" class="overview">
                     {{item.overview|strLength250}}
                 </p>
                 <p v-else class="overview">Описание не найдено</p>
             </div>
             <div class="card-footer">
-                <button>Смотреть онлайн</button>
+                <button @click="toMovie(item.id)">Смотреть онлайн</button>
                 <p>Дата релиза: {{item.release_date}}</p>
             </div>
         </div>
         <div class="pagination">
             <div
-                    v-for="item in last_page-1"
+                    :class="['pagination-btn',{'active': 1 === current_page}]"
+                    @click="changePage(1)"
+            >1</div>
+            <p v-show="last_page > 20" class="pagin-dots">...</p>
+            <div
+                    v-for="item in pages"
                     :key="item"
                     :class="['pagination-btn',{'active': item === current_page}]"
                     @click="changePage(item)"
             >
                 {{item}}
             </div>
+            <p v-show="last_page > 20" class="pagin-dots">...</p>
             <div
                     :class="['pagination-btn',{'active': last_page === current_page}]"
                     @click="changePage(last_page)"
@@ -50,24 +56,23 @@
             }
         },
         mounted() {
-            // axios.get(`https://api.themoviedb.org/3/movie/370291?api_key=6d65fd685a5fa4208280ac51e403570b&language=ru-ru`)
-            //     .then( res => {
-            //         console.log(res,111);
-            //     })
             this.getMovies()
         },
         methods: {
+            toMovie(id) {
+                this.$router.push(`/movie/${id}`)
+            },
             changePage(page) {
                 this.current_page = page;
                 this.getMovies();
                 window.scrollTo(0,0)
             },
             getMovies() {
-                this.$store.dispatch("movie/" + types.A_GET_NEW_MOVIE, {
-                    page: this.current_page
+                this.$store.dispatch("movie/" + types.A_GET_GENRES_MOVIE, {
+                    page: this.current_page,
+                    genres: this.getGenresId
                 })
                     .then( res => {
-                        console.log(res);
                         this.movies = res.data.results;
                         this.last_page = res.data.total_pages;
                     })
@@ -78,6 +83,28 @@
                 } else {
                     return "http://www.royal-pro.ir/wp-content/uploads/revslider/light-opus/polygon-background-250x375.jpg"
                 }
+            }
+        },
+        computed: {
+            getGenresId() {
+                return this.$route.params.genres_id
+            },
+            pages() {
+                let pages = [];
+                for (let i = 2; i < this.last_page; i++) {
+                    pages.push(i)
+                }
+                if (this.last_page > 20) {
+                    pages = pages.filter( val => {
+                        return val > this.current_page - 10 && val < this.current_page + 10;
+                    })
+                }
+                return pages
+            }
+        },
+        watch: {
+            getGenresId() {
+                this.getMovies()
             }
         },
         filters: {

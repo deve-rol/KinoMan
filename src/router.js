@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-Vue.use(Router)
+Vue.use(Router);
 
 let router = new Router({
     mode: 'hash',
@@ -16,9 +16,14 @@ let router = new Router({
                     component: () => import('./views/movies/index.vue'),
                 },
                 {
-                    path: '/:genres_id',
+                    path: '/genres/:genres_id',
                     name: 'Категории',
                     component: () => import('./views/movies/genres/index.vue'),
+                },
+                {
+                    path: '/movie/:movie_id',
+                    name: 'Категории',
+                    component: () => import('./views/movies/present_movie.vue'),
                 }
             ]
         },

@@ -16,7 +16,7 @@
                 <router-link
                         v-for="(item, key) in genres"
                         :key="key"
-                        :to="`/:${item.id}`"
+                        :to="`/genres/${item.id}`"
                         tag="div"
                         class="genres-item"
                 >
